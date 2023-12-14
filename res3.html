@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Roue en Mouvement</title>
+    <style>
+        body {
+            background-color: #2A3B93;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            color: #FFF;
+            font-family: Roboto;
+        }
+
+        h1 {
+            font-size: 4vh;
+            font-weight: 800;
+            text-align: center;
+            transition: opacity 2s ease-in-out;
+            opacity: 0;
+            padding-left: 20px;
+            padding-right: 20px;
+        }
+
+        #wheel-container {
+            text-align: center;
+        }
+
+        #wheel {
+            max-width: calc(100% - 100px); /* Taille maximale de l'image avec padding sur tous les côtés */
+            padding: 50px; /* Ajout de padding pour éviter que la roue ne touche les bords */
+            opacity: 0; /* Définir l'opacité initiale à 0 */
+            transition: transform 3s ease-out, opacity 2s ease-in-out; /* Transition de rotation et de fondu */
+        }
+
+        #redirect-button {
+            border-radius: 21px;
+            border: 0px;
+            background: #51C4E9;
+            box-shadow: 0px 0px 12px -3px #51C4E9;
+            color: #FFF;
+            font-size: 24px;
+            font-weight: 700;
+            padding: 20px;
+            opacity: 0; /* Définir l'opacité initiale à 0 */
+            transition: opacity 2s ease-in-out; /* Transition de fondu pour le bouton */
+        }
+        #vector {
+            max-width: calc(100% - 100px); /* Taille maximale de l'image avec padding sur tous les côtés */
+            position: absolute;
+            top: calc(50% - 25%); /* Remonter de 50% de la taille de la roue */
+            left: 50%; /* Aligner le centre de l'image avec le centre de la roue */
+            transform: translate(-50%, -50%); /* Ajuster la position de l'image */
+            z-index: 2; /* Assure que l'image est au-dessus de la roue */
+            opacity: 0;
+            transition: opacity 2s ease-in-out; 
+        }
+    </style>
+</head>
+<body>
+
+<div id="wheel-container">
+    <img id="vector" src="vect.png" alt="Vect">
+
+    <h1 id="title">APPUIE SUR “RÉVÉLER” ET DÉCOUVRE À QUOI CORRESPOND CE CHIFFRE</h1>
+    <img id="wheel" src="roue900.png" alt="Roue en mouvement">
+    <button id="redirect-button" onclick="redirectToAnotherPage()">Révéler</button>
+</div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const wheel = document.getElementById('wheel');
+        const redirectButton = document.getElementById('redirect-button');
+
+        // Ajout de la classe pour déclencher la rotation et le fondu
+        setTimeout(function() {
+            vector.style.opacity = '1';
+            
+            wheel.style.opacity = '1';
+            title.style.opacity = '1';
+            wheel.style.transform = 'rotate(720deg)'; // Changer le nombre de degrés selon vos besoins
+            redirectButton.style.opacity = '1'; // Affichage du bouton
+        }, 100);
+    });
+
+    function redirectToAnotherPage() {
+        // Redirection vers une autre page
+        window.location.href = 'fin3.html';
+    }
+</script>
+
+</body>
+</html>

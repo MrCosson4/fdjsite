@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Roue de la Fortune</title>
+    <style>
+        body {
+            background-color: #2A3B93;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+        h1{
+            color: #FFF;
+            text-align: center;
+            font-family: Roboto;
+            font-size: 4vh;
+            font-style: normal;
+            font-weight: 800;
+            line-height: normal;
+            letter-spacing: -0.28px;
+            padding-left: 20px;
+            padding-right: 20px;
+        }
+
+        button{
+            border-radius: 21px;
+            border: 0px;
+            background: #51C4E9;
+            box-shadow: 0px 0px 12px -3px #51C4E9;
+            flex-shrink: 0;
+            color: #FFF;
+            text-align: center;
+            font-family: Kodchasan;
+            font-size: 24px;
+            font-style: normal;
+            font-weight: 700;
+            line-height: normal;
+            padding: 20px;
+
+        }
+
+        #wheel-container {
+            text-align: center;
+            opacity: 1;
+            transition: opacity 2.5s ease-in-out; /* Transition de fondu pour le conteneur */
+        }
+
+        #wheel {
+            max-width: calc(100% - 100px); /* Taille maximale de l'image avec padding sur tous les côtés */
+            padding: 50px; /* Ajout de padding pour éviter que la roue ne touche les bords */
+            transition: transform 3s ease-in-out, opacity 2.5s ease-in-out; /* Augmentation de la durée de la transition */
+        }
+
+        #wheel-container.hidden {
+            opacity: 0;
+        }
+
+        #vector {
+            max-width: calc(100% - 100px); /* Taille maximale de l'image avec padding sur tous les côtés */
+            position: absolute;
+            top: calc(50% - 25%); /* Remonter de 50% de la taille de la roue */
+            left: 50%; /* Aligner le centre de l'image avec le centre de la roue */
+            transform: translate(-50%, -50%); /* Ajuster la position de l'image */
+            z-index: 2; /* Assure que l'image est au-dessus de la roue */
+        }
+    </style>
+</head>
+<body>
+
+<div id="wheel-container">
+    <img id="vector" src="vect.png" alt="Vect">
+    <h1>LA ROUE DE LA TRANSPARENCE !</h1>
+    <img id="wheel" src="roue.png" alt="Roue de la Fortune">
+    <button onclick="spinWheel()">Spin</button>
+</div>
+
+<script>
+    function spinWheel() {
+        const wheelContainer = document.getElementById('wheel-container');
+        const wheel = document.getElementById('wheel');
+
+        // Ajout de la classe pour déclencher le fondu
+        wheelContainer.classList.add('hidden');
+
+        // Rotation de la roue
+        wheel.style.transform = 'rotate(2000deg)'; // Augmentation de la rotation
+
+        // Redirection vers la nouvelle page après un certain délai (4 secondes dans cet exemple)
+        setTimeout(function () {
+            window.location.href = 'res2.html';
+        }, 3000);
+    }
+</script>
+
+</body>
+</html>

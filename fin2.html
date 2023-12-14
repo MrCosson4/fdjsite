@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Résultat Final</title>
+    <style>
+        body {
+            background-color: #2A3B93;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            color: #FFF;
+            font-family: Roboto;
+            overflow: hidden; /* Pour cacher le débordement des éléments animés */
+        }
+
+        #share-button {
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            border-radius: 10px;
+            border: 0px;
+            background: #51C4E9;
+            box-shadow: 0px 0px 12px -3px #51C4E9;
+            color: #FFF;
+            font-size: 16px;
+            font-weight: 700;
+            padding: 10px;
+            cursor: pointer;
+            opacity: 0;
+            transition: opacity 2s ease-in-out;
+        }
+
+        #content-container {
+            text-align: center;
+            opacity: 0;
+            transition: opacity 2s ease-in-out;
+            margin-top: 50px;
+            border: 2px solid #FF0000; /* Bordure rouge */
+            border-radius: 15px; /* Coins arrondis */
+            padding: 20px; /* Espacement interne */
+            margin: 35px;
+        }
+
+        h2 {
+            color:red;
+            font-size: 23px;
+            font-weight: 800;
+            margin-bottom: 10px;
+        }
+
+        p {
+            font-size: 18px;
+            margin-bottom: 20px;
+            color: #FFF;
+            text-align: center;
+            font-family: Roboto;
+            font-style: normal;
+            font-weight: 800;
+            line-height: normal;
+        }
+
+        #confetti-left {
+            top: 0;
+            left: 0;
+            position: fixed;
+            max-height: 30vh; /* Réduction de la hauteur */
+            opacity: 0;
+            transition: 2s ease-in-out;
+            transform: translateX(-100%); /* Initial position à l'extérieur de l'écran à gauche */
+        }
+
+        #confetti-left.slide-in {
+            transform: translateX(0); /* Position finale à l'intérieur de l'écran */
+        }
+
+        #restart-button {
+            border-radius: 21px;
+            border: 0px;
+            background: #51C4E9;
+            box-shadow: 0px 0px 12px -3px #51C4E9;
+            color: #FFF;
+            font-size: 24px;
+            font-weight: 700;
+            padding: 20px;
+            margin-top: 20px;
+            cursor: pointer;
+            opacity: 0;
+            transition: opacity 2s ease-in-out;
+        }
+
+        #share {
+            max-width: 35px;
+        }
+    </style>
+</head>
+<body>
+
+<button id="share-button" onclick="shareLink()"><img src="share.png" id="share"></button>
+
+<div id="content-container">
+    <h2>55400</h2>
+    <p>La FDJ a contribué à créer et pérenniser 55400 emplois. Les points de ventes non rentable sont gardés pour éviter la désertification dans les petites communes.</p>
+    <img src="im2.png" alt="Résultat final" style="max-width: 100%; border-radius: 20px;">
+</div>
+<button id="restart-button" onclick="restart()">Recommencer</button>
+
+<img id="confetti-left" src="confetti.png" alt="Confetti gauche">
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const shareButton = document.getElementById('share-button');
+        const contentContainer = document.getElementById('content-container');
+        const confettiLeft = document.getElementById('confetti-left');
+        const restartButton = document.getElementById('restart-button');
+
+        // Affichage en fade-in
+        setTimeout(function() {
+            shareButton.style.opacity = '1';
+            contentContainer.style.opacity = '1';
+            confettiLeft.style.opacity = '1';
+            restartButton.style.opacity = '1';
+
+            // Ajout de la classe pour le slide-in
+            confettiLeft.classList.add('slide-in');
+        }, 100);
+    });
+
+    function shareLink() {
+        const siteLink = window.location.href;
+        navigator.clipboard.writeText(siteLink).then(function() {
+            alert("Lien copié");
+        }).catch(function(error) {
+            console.error("Erreur lors de la copie dans le presse-papiers : ", error);
+        });
+    }
+
+    function restart() {
+        // Redirection vers la première page
+        window.location.href = 'index3.html';
+    }
+</script>
+
+</body>
+</html>
